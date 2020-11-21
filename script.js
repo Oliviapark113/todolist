@@ -9,6 +9,7 @@ renderTodos();
 
 function renderTodos(){
     todoList.innerHTML = "";
+
     todoCountSpan.innerHTML= todos.length;
     for(var i=0; i <todos.length; i++){
         var liElmt = document.createElement("li")
@@ -17,3 +18,23 @@ function renderTodos(){
     }
 
 }
+
+function addTodo(e){
+    e.preventDefault()
+    console.log("submit")
+    //get todoInput value from
+   var newTodo= todoInput.value
+
+    if (newTodo ===""){
+        return
+   }
+   else{
+       //push newTodo into array 
+        todos.push(newTodo);
+        todoInput.value=""
+        renderTodos();
+   }
+
+}
+
+todoForm.addEventListener("submit", addTodo)
